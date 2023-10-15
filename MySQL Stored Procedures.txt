@@ -1,0 +1,91 @@
+-------------Change Delimiter Symbol---------------------
+
+DELIMITER //
+
+---------------------------------------------------------
+
+-------------insertStudent Stored Procedure--------------
+
+CREATE PROCEDURE insertStudent(
+	IN p_id INT,
+	IN p_roll INT,
+	IN p_std VARCHAR(10),
+	IN p_name VARCHAR(100),
+	IN p_address VARCHAR(200),
+	IN p_gender VARCHAR(10),
+	IN p_email VARCHAR(100),
+	IN p_phone VARCHAR(10),
+	OUT p_status INT
+)
+BEGIN
+	DECLARE EXIT FOR SQLEXCEPTION
+	BEGIN
+		SET p_status = 0; 	-- Failed
+	END;
+
+	INSERT INTO student (id, roll, std, name, address, gender, email, phone)
+VALUES (p_id, p_roll, p_std, p_name, p_address, p_gender, p_email, p_phone);
+
+	SET p_status = 1;		-- Successful
+END //
+
+--------------------------------------------------------
+
+-------------updateStudent Stored Procedure-------------
+
+CREATE PROCEDURE insertStudent(
+	IN p_id INT,
+	IN p_roll INT,
+	IN p_std VARCHAR(10),
+	IN p_name VARCHAR(100),
+	IN p_address VARCHAR(200),
+	IN p_gender VARCHAR(10),
+	IN p_email VARCHAR(100),
+	IN p_phone VARCHAR(10),
+	OUT p_status INT
+)
+BEGIN
+	DECLARE duplicate_key_error CONDITION FOR 1062;		-- MySQL error code for duplicate key
+
+	DECLARE EXIT HANDLER FOR duplicate_key_error;
+
+	BEGIN
+		SET p_status = -1; 		-- Set status to indicate duplicate key violation
+	END;
+
+	START TRANSACTION;
+
+	SET p_status = 0; 			-- Default status indicating success
+
+	UPDATE student
+	SET
+		roll = p_roll,
+		std = p_std,
+		name = p_name,
+		address = p_address,
+		gender = p_gender,
+		email = p_email,
+		phone = p_phone,
+	WHERE id = p_id;
+	
+	-- Check for duplicate key violation
+	IF p_status = 0 AND ROW_COUNT() = 0 THEN
+		SET p_status = -2;		-- Set status to indicate no matching records found
+	END IF;
+
+	IF p_status = 0 THEN
+		COMMIT;
+	ELSE
+		ROLLBACK;
+	END IF;
+END //
+
+-------------deleteStudent Stored Procedure-------------
+
+CREATE PROCEDURE deleteStudent(sid INT)
+BEGIN
+	DELETE FROM student WHERE id = sid;
+END //
+
+--------------------------------------------------------
+	
