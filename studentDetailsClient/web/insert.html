@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Insert Details Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <style>
+            .form-container {
+                width: 40%;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: white;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .form-group label {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="form-container">
+            <h3 class="text-center">Insert Student Details</h3>
+            <form>
+                <div class="form-group">
+                    <label for="inputId">Admission Id</label>
+                    <input type="number" class="form-control" id="inputId" name="id" placeholder="1xx" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputRoll">Roll No.</label>
+                    <input type="number" class="form-control" id="inputRoll" name="roll" placeholder="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputName">Student Name</label>
+                    <input type="text" class="form-control" id="inputName" name="name" placeholder="Abc" required>
+                </div>
+                <div class="form-group">
+                    <label>Year</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioYear" id="radioYear1" value="FY" required>
+                        <label class="form-check-label" for="radioYear1">First Year</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioYear" id="radioYear2" value="SY" required>
+                        <label class="form-check-label" for="radioYear2">Second Year</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioYear" id="radioYear3" value="TY" required>
+                        <label class="form-check-label" for="radioYear3">Third Year</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioMale" value="Male" required>
+                        <label class="form-check-label" for="radioMale">Male</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioFemale" value="Female" required>
+                        <label class="form-check-label" for="radioFemale">Female</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="radioGender" id="radioOthers" value="Others" required>
+                        <label class="form-check-label" for="radioOthers">Others</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhoneNo">Phone No.</label>
+                    <input type="number" class="form-control" id="inputPhoneNo" name="phone" placeholder="xxxxxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail4">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" name="addr" placeholder="Mumbai" required>
+                </div>
+                <br>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary" formaction="insert.jsp">Submit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
