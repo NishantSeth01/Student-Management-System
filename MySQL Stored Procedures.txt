@@ -33,7 +33,7 @@ END //
 
 -------------updateStudent Stored Procedure-------------
 
-CREATE PROCEDURE insertStudent(
+CREATE PROCEDURE updateStudent(
 	IN p_id INT,
 	IN p_roll INT,
 	IN p_std VARCHAR(10),
